@@ -186,16 +186,6 @@
     text-align: center;
   }
 
-  .video-stage::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: 0.72;
-    background:
-      linear-gradient(rgba(9,11,13,0.66), rgba(9,11,13,0.9)),
-      url("assets/shc-logo-dark.png") center 43% / 440px auto no-repeat;
-  }
-
   .video-stage::after {
     content: "";
     position: absolute;
@@ -204,46 +194,129 @@
     bottom: 0;
     height: 5px;
     background: var(--red);
+    pointer-events: none;
   }
 
-  .video-stage__placeholder {
+  .video-stage__poster {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow: hidden;
+    color: #fff;
+    background: #050607;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .video-stage__poster::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(9,11,13,0.16) 0%, rgba(9,11,13,0.16) 42%, rgba(9,11,13,0.94) 100%),
+      linear-gradient(90deg, rgba(9,11,13,0.22), transparent 50%);
+    transition: background 180ms ease;
+  }
+
+  .video-stage__poster:hover::after,
+  .video-stage__poster:focus-visible::after {
+    background:
+      linear-gradient(180deg, rgba(9,11,13,0.08) 0%, rgba(9,11,13,0.12) 42%, rgba(9,11,13,0.9) 100%),
+      linear-gradient(90deg, rgba(9,11,13,0.12), transparent 50%);
+  }
+
+  .video-stage__poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+  }
+
+  .video-stage__poster:hover img,
+  .video-stage__poster:focus-visible img {
+    transform: scale(1.015);
+  }
+
+  .video-stage__kicker {
+    position: absolute;
     z-index: 2;
-    display: grid;
-    place-content: center;
-    justify-items: center;
-    gap: 14px;
-    padding: 30px;
+    top: 20px;
+    left: 20px;
+    padding: 7px 10px;
+    color: #fff;
+    background: var(--red);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
   }
 
   .video-stage__play {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 50%;
     width: 78px;
     height: 78px;
     display: grid;
     place-items: center;
+    transform: translate(-50%, -50%);
     border-radius: 50%;
     color: #fff;
     background: var(--red);
     box-shadow: 0 14px 30px rgba(217,35,46,0.34);
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .video-stage__poster:hover .video-stage__play,
+  .video-stage__poster:focus-visible .video-stage__play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--red-dark);
   }
 
   .video-stage__play svg { width: 28px; margin-left: 4px; fill: currentColor; }
 
+  .video-stage__copy {
+    position: absolute;
+    z-index: 2;
+    right: 24px;
+    bottom: 22px;
+    left: 24px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+  }
+
   .video-stage__label {
-    margin: 0;
+    max-width: 560px;
     color: #fff;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 800;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
 
   .video-stage__hint {
-    margin: 0;
-    color: #c9c9c9;
-    font-size: 13px;
-    line-height: 1.5;
+    flex: 0 0 auto;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .video-stage iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
   }
 
   .benefits {
@@ -1079,23 +1152,23 @@
       margin: 28px auto -24px;
     }
 
-    .video-stage::before {
-      background-size: 280px auto;
-    }
-
-    .video-stage__placeholder {
-      gap: 8px;
-      padding: 18px;
-    }
-
     .video-stage__play {
       width: 58px;
       height: 58px;
     }
 
     .video-stage__play svg { width: 21px; }
-    .video-stage__label { font-size: 15px; }
-    .video-stage__hint { max-width: 280px; font-size: 10px; }
+    .video-stage__kicker { top: 12px; left: 12px; font-size: 9px; }
+
+    .video-stage__copy {
+      right: 14px;
+      bottom: 13px;
+      left: 14px;
+      gap: 10px;
+    }
+
+    .video-stage__label { max-width: 250px; font-size: 14px; }
+    .video-stage__hint { font-size: 8px; }
 
     .benefits {
       min-height: 0;
@@ -1243,15 +1316,19 @@
     </h1>
     <p class="hero__sub">One month inside the business to replace assumption with evidence and focused implementation.</p>
 
-    <!-- VSL SLOT: replace the placeholder content below with your responsive video iframe. -->
-    <div class="video-stage" id="video-stage" aria-label="Enterprise Value Acceleration Engagement overview">
-      <div class="video-stage__placeholder">
-        <div class="video-stage__play" aria-hidden="true">
+    <div class="video-stage" id="video-stage" data-youtube-id="bO09Qxy0i8k">
+      <button class="video-stage__poster" type="button" aria-label="Play The Number 1 Reason Your Company Feels Harder to Run">
+        <img src="assets/vsl-thumbnail.jpg" alt="" width="1280" height="720">
+        <span class="video-stage__kicker">11-Minute VSL</span>
+        <span class="video-stage__play" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-        </div>
-        <p class="video-stage__label">Your VSL Goes Here</p>
-        <p class="video-stage__hint">16:9 video slot · ready for YouTube, Vimeo, Wistia, or a direct embed</p>
-      </div>
+        </span>
+        <span class="video-stage__copy">
+          <span class="video-stage__label">The #1 Reason Your Company Feels Harder to Run</span>
+          <span class="video-stage__hint">Press play<br>Sound on</span>
+        </span>
+      </button>
+      <noscript><a href="https://youtu.be/bO09Qxy0i8k">Watch the video on YouTube</a></noscript>
     </div>
   </section>
 
@@ -1446,6 +1523,20 @@
 </footer>
 
 <script>
+  const vslStage = document.querySelector("#video-stage");
+  const vslPoster = vslStage?.querySelector(".video-stage__poster");
+
+  vslPoster?.addEventListener("click", () => {
+    const videoId = vslStage.dataset.youtubeId;
+    const iframe = document.createElement("iframe");
+    iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+    iframe.title = "The Number 1 Reason Your Company Feels Harder to Run";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    vslStage.replaceChildren(iframe);
+  });
+
   document.querySelectorAll(".faq__question").forEach((button) => {
     button.addEventListener("click", () => {
       const wasOpen = button.getAttribute("aria-expanded") === "true";
