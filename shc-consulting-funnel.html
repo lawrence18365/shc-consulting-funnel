@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="The Enterprise Value Acceleration Engagement from SHC Consulting: one month inside the business to improve earnings quality, execution quality, and enterprise quality.">
-<title>SHC Consulting — The Enterprise Value Acceleration Engagement</title>
+<title>SHC Consulting | The Enterprise Value Acceleration Engagement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
@@ -1535,6 +1535,540 @@
     .workstream { padding-left: 58px; }
   }
 
+  /* V2 revision: proof overlay, expanded engagement detail, and booking flow. */
+  .proof {
+    padding: 78px 20px 84px;
+  }
+
+  .proof__subtitle {
+    margin: 12px auto 0;
+    color: #66686b;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .client-proof {
+    position: relative;
+    width: min(1020px, 100%);
+    min-height: 650px;
+    margin: 38px auto 0;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    background: var(--black);
+    border: 0;
+    border-radius: 18px;
+    box-shadow: 0 28px 72px rgba(9,11,13,0.22);
+  }
+
+  .client-proof::after {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(9,11,13,0.08) 0%, rgba(9,11,13,0.22) 34%, rgba(9,11,13,0.82) 58%, rgba(9,11,13,0.97) 100%),
+      linear-gradient(180deg, rgba(9,11,13,0.05) 45%, rgba(9,11,13,0.76) 100%);
+    pointer-events: none;
+  }
+
+  .client-proof__background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 24%;
+  }
+
+  .client-proof__overlay {
+    position: relative;
+    z-index: 2;
+    width: 55%;
+    min-height: 650px;
+    margin-left: auto;
+    padding: 42px 38px 38px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .client-proof__quote {
+    padding: 0;
+    display: block;
+  }
+
+  .client-proof__quote::before {
+    top: -38px;
+    right: 0;
+    color: rgba(255,255,255,0.12);
+    font-size: 110px;
+  }
+
+  .client-proof__stars {
+    margin-bottom: 16px;
+    color: #ff4650;
+  }
+
+  .client-proof__eyebrow {
+    color: #d8d5ce;
+  }
+
+  .client-proof blockquote {
+    max-width: 470px;
+    color: #fff;
+    font-size: clamp(25px, 2.45vw, 34px);
+  }
+
+  .client-proof__name {
+    margin-top: 22px;
+    color: #fff;
+  }
+
+  .client-proof__name span {
+    margin-left: 8px;
+    color: #c9c7c1;
+    font-weight: 500;
+  }
+
+  .client-proof .proof-outcomes {
+    width: 100%;
+    margin: 30px 0 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .client-proof .proof-outcome {
+    min-height: 118px;
+    padding: 16px;
+    color: #fff;
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: none;
+    backdrop-filter: blur(7px);
+  }
+
+  .client-proof .proof-outcome strong {
+    margin-top: 12px;
+    font-size: clamp(24px, 2.2vw, 31px);
+  }
+
+  .client-proof .proof-outcome span:last-child {
+    color: #dedbd4;
+  }
+
+  .outcomes {
+    padding: 68px 36px 80px;
+  }
+
+  .outcomes__grid {
+    width: min(1240px, 100%);
+    gap: 24px;
+  }
+
+  .outcome {
+    padding-top: 22px;
+    border-top: 5px solid var(--ink);
+    text-align: left;
+  }
+
+  .outcome__index {
+    color: var(--red);
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+  }
+
+  .outcome h3 {
+    min-height: 0;
+    margin: 8px 0 6px;
+    display: block;
+    font-size: 25px;
+    text-align: left;
+  }
+
+  .outcome h4 {
+    min-height: 72px;
+    margin: 0 0 18px;
+    color: #56585b;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    line-height: 1.45;
+    text-transform: uppercase;
+  }
+
+  .outcome__visual {
+    height: 220px;
+  }
+
+  .outcome p {
+    margin: 20px 0 0;
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .outcome__points {
+    margin: 18px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .outcome__points li {
+    position: relative;
+    padding-left: 18px;
+    color: #4e5053;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .outcome__points li::before {
+    content: "";
+    position: absolute;
+    top: 0.55em;
+    left: 0;
+    width: 7px;
+    height: 7px;
+    background: var(--red);
+    border-radius: 50%;
+  }
+
+  .outcomes .cta {
+    margin-top: 64px;
+  }
+
+  .section-kicker {
+    margin: 0 0 12px;
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .working-session {
+    padding: 82px 20px 88px;
+    color: #fff;
+    background: var(--black);
+    text-align: center;
+  }
+
+  .working-session .section-heading {
+    color: #fff;
+  }
+
+  .working-session .section-sub {
+    max-width: 880px;
+    color: #d3d2cd;
+  }
+
+  .working-session__note {
+    max-width: 760px;
+    margin: 18px auto 0;
+    color: #aaa9a5;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .section-closing {
+    max-width: 820px;
+    margin: 30px auto 0;
+    color: #4f5154;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.6;
+  }
+
+  .month-map {
+    width: min(760px, 100%);
+  }
+
+  .workstream {
+    min-height: 160px;
+  }
+
+  .leadership-leaves {
+    padding: 82px 20px 90px;
+    background: #fff;
+    text-align: center;
+  }
+
+  .leadership-leaves__grid {
+    width: min(1100px, 100%);
+    margin: 44px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    text-align: left;
+  }
+
+  .leave-card {
+    min-height: 330px;
+    padding: 30px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 14px 34px rgba(9,11,13,0.08);
+  }
+
+  .leave-card > span {
+    color: var(--red);
+    font-family: "Montserrat", sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+  }
+
+  .leave-card h3 {
+    margin: 20px 0 14px;
+    font-size: 21px;
+    line-height: 1.3;
+  }
+
+  .leave-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .decision-cta {
+    padding: 80px 20px 86px;
+    color: #fff;
+    background: var(--charcoal);
+    text-align: center;
+  }
+
+  .decision-cta .section-heading {
+    color: #fff;
+  }
+
+  .decision-cta .section-sub {
+    color: #d7d6d1;
+  }
+
+  .fit {
+    padding: 82px 20px 92px;
+    background: var(--paper-soft);
+    text-align: center;
+  }
+
+  .fit__grid {
+    width: min(1060px, 100%);
+    margin: 42px auto 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    text-align: left;
+  }
+
+  .fit-card {
+    padding: 32px;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-top: 6px solid var(--ink);
+    border-radius: 12px;
+    box-shadow: 0 16px 38px rgba(9,11,13,0.08);
+  }
+
+  .fit-card--yes {
+    border-top-color: var(--red);
+  }
+
+  .fit-card h3 {
+    margin: 0 0 22px;
+    font-size: 24px;
+  }
+
+  .fit-card ul {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 13px;
+    list-style: none;
+  }
+
+  .fit-card li {
+    position: relative;
+    padding-left: 25px;
+    color: #4e5053;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .fit-card li::before {
+    content: "";
+    position: absolute;
+    top: 0.55em;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+  }
+
+  .fit-card--no li::before {
+    border-color: #77797b;
+  }
+
+  .schedule .section-kicker {
+    color: #ff5d65;
+  }
+
+  .calendar-slot {
+    width: min(820px, 100%);
+    margin: 40px auto 0;
+    padding: 38px;
+    color: var(--ink);
+    background: #fff;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    box-shadow: 0 24px 58px rgba(0,0,0,0.25);
+  }
+
+  .calendar-slot__eyebrow {
+    margin: 0;
+    color: var(--red);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .calendar-slot h3 {
+    margin: 12px 0 10px;
+    font-size: 26px;
+    line-height: 1.25;
+  }
+
+  .calendar-slot > p:not(.calendar-slot__eyebrow) {
+    max-width: 690px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .calendar-slot .cta {
+    margin-top: 26px;
+  }
+
+  .footer__contact {
+    margin: 0 auto 12px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 800px) {
+    .hero__sub {
+      margin-top: 28px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+
+    .client-proof {
+      min-height: 940px;
+    }
+
+    .client-proof::after {
+      background: linear-gradient(180deg, rgba(9,11,13,0.04) 0%, rgba(9,11,13,0.15) 35%, rgba(9,11,13,0.88) 58%, rgba(9,11,13,0.98) 100%);
+    }
+
+    .client-proof__background {
+      object-position: 48% 10%;
+    }
+
+    .client-proof__overlay {
+      width: 100%;
+      min-height: 940px;
+      padding: 430px 24px 26px;
+    }
+
+    .client-proof__quote {
+      padding: 0;
+    }
+
+    .client-proof blockquote {
+      max-width: 540px;
+      font-size: 27px;
+    }
+
+    .client-proof .proof-outcomes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .outcomes {
+      padding-inline: 20px;
+    }
+
+    .outcome h4 {
+      min-height: 0;
+    }
+
+    .leadership-leaves__grid,
+    .fit__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .leave-card {
+      min-height: 0;
+    }
+
+    .calendar-slot {
+      padding: 28px 22px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .client-proof {
+      min-height: 900px;
+    }
+
+    .client-proof__overlay {
+      min-height: 900px;
+      padding: 400px 18px 20px;
+    }
+
+    .client-proof blockquote {
+      font-size: 23px;
+      line-height: 1.32;
+    }
+
+    .client-proof .proof-outcome {
+      min-height: 110px;
+      padding: 14px;
+    }
+
+    .client-proof .proof-outcome strong {
+      font-size: 23px;
+    }
+
+    .outcome__visual {
+      height: 210px;
+    }
+
+    .working-session,
+    .leadership-leaves,
+    .decision-cta,
+    .fit {
+      padding-block: 64px 70px;
+    }
+
+    .fit-card,
+    .leave-card {
+      padding: 24px;
+    }
+
+    .calendar-slot h3 {
+      font-size: 22px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     *, *::before, *::after { transition-duration: 0.01ms !important; }
@@ -1558,12 +2092,12 @@
     <h1 class="hero__title" id="hero-title">
       Build A Company That Earns More, Runs With More Control, And <strong>Depends Less On You.</strong>
     </h1>
-    <p class="hero__sub">Watch this short video to see why growing companies become harder to understand—and how seeing the day-to-day clearly reveals where profit and control are being lost.</p>
+    <p class="hero__sub">Watch the short video to see why growing companies become harder to understand from the top, and how this engagement replaces assumption with evidence before the wrong problem receives more money.</p>
 
     <div class="video-stage" id="video-stage" data-youtube-id="bO09Qxy0i8k">
       <button class="video-stage__poster" type="button" aria-label="Play The Number 1 Reason Your Company Feels Harder to Run">
         <img src="assets/vsl-thumbnail.jpg" alt="" width="1280" height="720">
-        <span class="video-stage__kicker">11-Minute VSL</span>
+        <span class="video-stage__kicker">Watch: 8 Minutes</span>
         <span class="video-stage__play" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </span>
@@ -1578,40 +2112,38 @@
 
   <section class="benefits" aria-labelledby="benefits-title">
     <div class="narrow-shell">
-      <p class="benefits__lead" id="benefits-title">Inside this engagement, we will:</p>
+      <p class="benefits__lead" id="benefits-title">In this engagement, we will:</p>
       <ul class="benefits__list">
-        <li>Reconstruct how the company actually operates</li>
-        <li>Find the highest-confidence constraints and opportunities</li>
-        <li>Install up to three focused workstreams</li>
+        <li>Reconstruct how the company actually operates.</li>
+        <li>Compare what leadership believes is happening with what the people, work, systems, and numbers show.</li>
+        <li>Identify the few changes most likely to improve performance, control, and long-term company quality.</li>
       </ul>
-      <p class="benefits__tail">No generic playbook. The first week determines what the next three should fix.</p>
-      <a class="cta" href="#schedule">👉 YES — SHOW ME THE ENGAGEMENT</a>
+      <p class="benefits__tail">Understand what is actually limiting the company before spending more on advertising, hiring, software, training, or expansion, so leadership can grow with fewer expensive assumptions.</p>
+      <a class="cta" href="#working-session">YES, SHOW ME THIS ENGAGEMENT</a>
     </div>
   </section>
 
   <section class="proof" aria-labelledby="proof-title">
-    <h2 class="proof__title" id="proof-title">One Client. Measurable Outcomes.</h2>
-    <p class="proof__subtitle">One story, one quote, and the business results behind it.</p>
+    <h2 class="proof__title" id="proof-title">Most Recent Case Study: Measurable Outcomes</h2>
+    <p class="proof__subtitle">BowTie Cleaning</p>
 
     <div class="client-proof">
-      <figure class="client-proof__photo">
-        <img src="assets/wayne-proof.webp" alt="Wayne, a home-service business owner" width="1600" height="2133">
-        <figcaption>Wayne</figcaption>
-      </figure>
+      <img class="client-proof__background" src="assets/wayne-proof.webp" alt="Wayne, owner of BowTie Cleaning, at work" width="1600" height="2133">
+      <div class="client-proof__overlay">
+        <article class="client-proof__quote">
+          <div class="client-proof__stars" aria-label="Five stars">★★★★★</div>
+          <p class="client-proof__eyebrow">BowTie Cleaning | Client Perspective</p>
+          <blockquote>“I can tell you for sure, I’m definitely doing a lot more work.”</blockquote>
+          <p class="client-proof__name">Wayne <span>Owner</span></p>
+        </article>
 
-      <article class="client-proof__quote">
-        <div class="client-proof__stars" aria-label="Five stars">★★★★★</div>
-        <p class="client-proof__eyebrow">Client perspective</p>
-        <blockquote>“I can tell you for sure, I’m definitely doing a lot more work.”</blockquote>
-        <p class="client-proof__name">Wayne</p>
-      </article>
-    </div>
-
-    <div class="proof-outcomes" aria-label="Verified client outcomes">
-      <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+137%</strong><span>Top-line revenue</span></article>
-      <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+77%</strong><span>Completed job count</span></article>
-      <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+36%</strong><span>Average order value</span></article>
-      <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>≈4/day</strong><span>Consistent lead flow</span></article>
+        <div class="proof-outcomes" aria-label="Verified client outcomes">
+          <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+137%</strong><span>Top-line revenue</span></article>
+          <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+77%</strong><span>Job count</span></article>
+          <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>+36%</strong><span>Average order value</span></article>
+          <article class="proof-outcome"><span class="bowtie-mark" aria-hidden="true"></span><strong>≈4/day</strong><span>Lead consistency</span></article>
+        </div>
+      </div>
     </div>
 
     <p class="proof__disclaimer">Verified outcomes are presented against the agreed comparison period and supplied business records.</p>
@@ -1624,74 +2156,131 @@
   <section class="outcomes" aria-label="Engagement outcomes">
     <div class="outcomes__grid">
       <article class="outcome">
-        <h3>#1 Revenue Quality</h3>
+        <span class="outcome__index">01</span>
+        <h3>Revenue Quality</h3>
+        <h4>Create More Of The Revenue The Company Actually Wants</h4>
         <div class="outcome__visual">
           <img src="assets/revenue-quality.webp" alt="Several customer revenue streams converging into a stable upward path for a home-service company" width="1400" height="933">
         </div>
-        <p>Increase the share of earnings coming from strong offers, profitable customers, repeat business, and economically sound acquisition.</p>
+        <p>Increase the share of earnings created through profitable customers, stronger offers, repeat purchases, referrals, customer reactivation, recurring relationships, owned demand, and acquisition that returns cash at a sustainable rate.</p>
+        <ul class="outcome__points">
+          <li>Higher customer lifetime gross profit</li>
+          <li>More repeat and referral revenue</li>
+          <li>Less dependence on one acquisition channel</li>
+          <li>Better service and customer mix</li>
+          <li>Shorter acquisition payback</li>
+          <li>More predictable demand</li>
+        </ul>
       </article>
 
       <article class="outcome">
-        <h3>#2 Execution Quality</h3>
+        <span class="outcome__index">02</span>
+        <h3>Execution Quality</h3>
+        <h4>Turn Leadership Decisions Into Consistent Action</h4>
         <div class="outcome__visual">
           <img src="assets/execution-quality.webp" alt="A leadership priority moving through ownership, team action, scorecards, review, and a completed result" width="1400" height="933">
         </div>
-        <p>Translate expectations into clear handoffs, scripts, scorecards, onboarding, ownership, and management rhythms.</p>
+        <p>Translate leadership expectations into observable behavior, clear ownership, scripts, scorecards, onboarding, coaching, handoffs, and management rhythms that can be repeated across the team.</p>
+        <ul class="outcome__points">
+          <li>Faster implementation</li>
+          <li>Clearer ownership</li>
+          <li>More consistent employee behavior</li>
+          <li>Better management visibility</li>
+          <li>Stronger training and onboarding</li>
+          <li>Fewer dropped handoffs</li>
+          <li>Less reliance on verbal reminders</li>
+        </ul>
       </article>
 
       <article class="outcome">
-        <h3>#3 Enterprise Quality</h3>
+        <span class="outcome__index">03</span>
+        <h3>Enterprise Quality</h3>
+        <h4>Build A Company That Is More Predictable, Transferable, And Less Dependent On A Few People</h4>
         <div class="outcome__visual">
           <img src="assets/enterprise-quality.webp" alt="A resilient home-service company supported by independent operating pillars as the owner steps away" width="1400" height="933">
         </div>
-        <p>Reduce owner, key-person, and concentration risk while improving reporting, continuity, and management depth.</p>
+        <p>Reduce owner dependence, key-person risk, customer and channel concentration, weak documentation, and unreliable reporting while improving management depth, continuity, and transferability.</p>
+        <ul class="outcome__points">
+          <li>Lower owner dependence</li>
+          <li>Reduced key-person risk</li>
+          <li>Better management depth</li>
+          <li>Stronger documentation</li>
+          <li>More reliable reporting</li>
+          <li>More predictable earnings</li>
+          <li>Greater readiness for growth or transfer</li>
+        </ul>
       </article>
     </div>
 
-    <a class="cta" href="#schedule">👉 I WANT A STRONGER COMPANY</a>
+    <a class="cta" href="#working-session">I WANT A STRONGER COMPANY</a>
+  </section>
+
+  <section class="working-session" id="working-session" aria-labelledby="working-session-title">
+    <p class="section-kicker">A focused first conversation</p>
+    <h2 class="section-heading" id="working-session-title">See Whether The Engagement Fits Your Company</h2>
+    <p class="section-sub">Schedule a twenty-minute working session to discuss the decision, constraint, or investment currently in front of the company. We will compare what leadership currently believes with the evidence available and determine whether this engagement is the responsible next step.</p>
+    <a class="cta" href="#schedule">Schedule A 20-Minute Working Session</a>
+    <p class="working-session__note">Twenty minutes. No commitment. If the engagement does not fit, neither side has to force the conversation further.</p>
   </section>
 
   <section class="engagement" aria-labelledby="month-title">
     <h2 class="section-heading" id="month-title">One Month Inside The Business</h2>
-    <p class="section-sub">The first week reconstructs the business. The remaining three weeks build, install, and hand off the systems with the strongest evidence behind them.</p>
+    <p class="section-sub">The engagement begins by reconstructing how the company actually operates. The remaining work is selected from the evidence, then built inside the business with clear ownership, leadership visibility, and a defined handoff.</p>
 
     <div class="month-map">
       <div class="month-map__top">
         <strong>30-Day Engagement Map</strong>
-        <span>Evidence → Action → Handoff</span>
+        <span>Evidence &gt; Action &gt; Handoff</span>
       </div>
       <article class="month-step">
         <span class="month-step__number">01</span>
-        <h3>Week One: Reconstruct</h3>
-        <p>Leadership and employee interviews, financial and CRM analysis, customer-journey tracing, sales observation, and enterprise-risk assessment.</p>
+        <h3>Week 1: Reconstruct The Company</h3>
+        <p>Leadership and employee interviews, financial and CRM analysis, customer-journey tracing, sales and operating observation, customer-data review, acquisition economics, owner-dependence analysis, and enterprise-risk assessment.</p>
       </article>
       <article class="month-step">
         <span class="month-step__number">02</span>
-        <h3>Weeks Two–Three: Build</h3>
-        <p>Up to three workstreams selected according to financial impact, confidence, dependencies, management capacity, and time to value.</p>
+        <h3>Weeks 2-3: Build And Implement The Priorities</h3>
+        <p>Up to three workstreams are selected according to financial impact, strategic importance, confidence, cash requirements, management capacity, dependencies, and time to value.</p>
       </article>
       <article class="month-step">
         <span class="month-step__number">03</span>
-        <h3>Week Four: Install</h3>
-        <p>Leadership dashboard, scorecards, meeting cadence, named owners, deadlines, 90-day execution plan, and executive handoff.</p>
+        <h3>Week 4: Install Visibility And Transfer Ownership</h3>
+        <p>Leadership dashboards, scorecards, management cadence, named owners, deadlines, training, documentation, ninety-day execution plan, twelve-month sequence, and executive handoff.</p>
       </article>
     </div>
+    <p class="section-closing">The company should leave the engagement stronger, not more dependent on the consultant.</p>
   </section>
 
   <section class="workstreams" aria-labelledby="workstreams-title">
-    <h2 class="section-heading" id="workstreams-title">Possible Implementation Workstreams</h2>
-    <p class="section-sub">The first week determines which ones deserve implementation. Normally, no more than three remain active at one time.</p>
+    <h2 class="section-heading" id="workstreams-title">What The Engagement May Work On</h2>
+    <p class="section-sub">These are possible workstreams, not a predetermined package. The first week determines which ones deserve implementation.</p>
 
     <div class="workstreams__board">
-      <article class="workstream"><span class="workstream__number">01</span><h3>Revenue &amp; Economics</h3><p>Customer mix, pricing, gross margin, CAC, lifetime gross profit, payback, and early cash.</p></article>
-      <article class="workstream"><span class="workstream__number">02</span><h3>Sales &amp; Management</h3><p>Qualification, discovery, proposals, coaching, scorecards, onboarding, and forecast accuracy.</p></article>
-      <article class="workstream"><span class="workstream__number">03</span><h3>Customer Value</h3><p>Reactivation, referrals, repeat purchases, adjacent offers, reputation, and database quality.</p></article>
-      <article class="workstream"><span class="workstream__number">04</span><h3>Operations &amp; CX</h3><p>Handoffs, capacity, communication, rework, job economics, service recovery, and collection.</p></article>
-      <article class="workstream"><span class="workstream__number">05</span><h3>Technology</h3><p>CRM use, reporting, duplicate work, adoption, integrations, automation, and software scope.</p></article>
-      <article class="workstream"><span class="workstream__number">06</span><h3>Enterprise Risk</h3><p>Owner dependence, key-person risk, concentration, management depth, and continuity.</p></article>
+      <article class="workstream"><span class="workstream__number">01</span><h3>Revenue And Offer Economics</h3><p>Customer mix, pricing, service mix, gross margin, acquisition cost, lifetime gross profit, payback, early cash, repeat demand, and recurring relationships.</p></article>
+      <article class="workstream"><span class="workstream__number">02</span><h3>Sales And Management</h3><p>Qualification, discovery, presentations, proposals, follow-up, coaching, representative and manager scorecards, onboarding, and forecast accuracy.</p></article>
+      <article class="workstream"><span class="workstream__number">03</span><h3>Customer Value And Owned Demand</h3><p>Reactivation, referrals, reviews, repeat purchases, maintenance, adjacent offers, customer education, branded demand, and database quality.</p></article>
+      <article class="workstream"><span class="workstream__number">04</span><h3>Operations And Customer Experience</h3><p>Handoffs, scheduling, capacity, communication, quality control, rework, job economics, service recovery, and collection.</p></article>
+      <article class="workstream"><span class="workstream__number">05</span><h3>Technology And Information</h3><p>CRM use, reporting, data quality, duplicate work, adoption, integrations, automation, and software requirements.</p></article>
+      <article class="workstream"><span class="workstream__number">06</span><h3>Enterprise Risk And Transferability</h3><p>Owner dependence, key-person risk, customer and channel concentration, management depth, documentation, continuity, and reporting.</p></article>
     </div>
+    <p class="section-closing">The objective is to complete meaningful work on the few projects that matter most, not begin every attractive project.</p>
+    <a class="cta" href="#schedule">Apply For The Engagement</a>
+  </section>
 
-    <a class="cta" href="#schedule">👉 APPLY FOR THE ENGAGEMENT</a>
+  <section class="leadership-leaves" aria-labelledby="leadership-leaves-title">
+    <p class="section-kicker">Practical transfer, not shelfware</p>
+    <h2 class="section-heading" id="leadership-leaves-title">What Leadership Leaves With</h2>
+    <div class="leadership-leaves__grid">
+      <article class="leave-card"><span>01</span><h3>A Working Enterprise Model</h3><p>A current-state view of earnings quality, revenue quality, customer value, risk, transferability, acquisition economics, owner dependence, and the conditions affecting company quality.</p></article>
+      <article class="leave-card"><span>02</span><h3>Operating Systems Built Inside The Company</h3><p>The actual systems depend on the findings and may include scripts, scorecards, coaching standards, management rhythms, handoffs, customer campaigns, onboarding, dashboards, or technology requirements.</p></article>
+      <article class="leave-card"><span>03</span><h3>A Clear Order Of Operations</h3><p>A prioritized opportunity register, named owners, deadlines, metrics, dependencies, stop conditions, ninety-day execution plan, and twelve-month sequencing view.</p></article>
+    </div>
+  </section>
+
+  <section class="decision-cta" aria-labelledby="decision-title">
+    <h2 class="section-heading" id="decision-title">Make The Next Decision From What The Business Is Actually Showing</h2>
+    <p class="section-sub">Schedule a twenty-minute working session to discuss the company's current constraint, the evidence leadership has, and whether the engagement fits.</p>
+    <a class="cta" href="#schedule">Schedule A Working Session</a>
   </section>
 
   <section class="faq" aria-labelledby="faq-title">
@@ -1701,37 +2290,88 @@
         <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-1">
           <span>What is this exactly?</span><span class="faq__symbol" aria-hidden="true">+</span>
         </button>
-        <div class="faq__answer" id="faq-answer-1"><div><p>A one-month operating engagement. The first week reconstructs the business and identifies the highest-confidence constraints and opportunities. The remaining three weeks focus on implementation, leadership visibility, ownership, and handoff.</p></div></div>
+        <div class="faq__answer" id="faq-answer-1"><div><p>The Enterprise Value Acceleration Engagement is a one-month operating engagement. The first week reconstructs the business and identifies the highest-confidence constraints and opportunities. The remaining three weeks focus on implementing a limited number of priorities, installing leadership visibility, assigning ownership, and transferring the work back to the company.</p></div></div>
       </article>
 
       <article class="faq__item">
         <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-2">
           <span>Is this a business valuation?</span><span class="faq__symbol" aria-hidden="true">+</span>
         </button>
-        <div class="faq__answer" id="faq-answer-2"><div><p>No. Enterprise value is used as a management lens for examining earnings quality, predictability, risk, and transferability. The working model is not a certified valuation or a prediction of what a buyer will pay.</p></div></div>
+        <div class="faq__answer" id="faq-answer-2"><div><p>No. Enterprise value is used as a management lens for examining earnings quality, predictability, owner dependence, concentration, risk, management depth, and transferability. The working model is not a certified valuation or a prediction of what a buyer will pay.</p></div></div>
       </article>
 
       <article class="faq__item">
         <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-3">
           <span>What gets implemented?</span><span class="faq__symbol" aria-hidden="true">+</span>
         </button>
-        <div class="faq__answer" id="faq-answer-3"><div><p>Normally no more than three active workstreams. They are selected after Week 1 according to evidence, impact, confidence, dependencies, cash requirements, management capacity, and time to value.</p></div></div>
+        <div class="faq__answer" id="faq-answer-3"><div><p>Normally no more than three active workstreams. They are selected after the first week according to evidence, financial impact, strategic importance, confidence, dependencies, cash requirements, management capacity, and time to value.</p></div></div>
       </article>
 
       <article class="faq__item">
         <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-4">
+          <span>What will our company need to provide?</span><span class="faq__symbol" aria-hidden="true">+</span>
+        </button>
+        <div class="faq__answer" id="faq-answer-4"><div><p>The agreed records, relevant system access, leadership and employee interviews, a primary contact, leadership participation, and reasonable access to the work being examined.</p></div></div>
+      </article>
+
+      <article class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-5">
+          <span>Are we required to continue afterward?</span><span class="faq__symbol" aria-hidden="true">+</span>
+        </button>
+        <div class="faq__answer" id="faq-answer-5"><div><p>No. The month stands on its own. The company may continue internally, hire a specialist for a defined project, or consider a separately scoped continuation when the work genuinely requires it.</p></div></div>
+      </article>
+
+      <article class="faq__item">
+        <button class="faq__question" type="button" aria-expanded="false" aria-controls="faq-answer-6">
           <span>How much does it cost?</span><span class="faq__symbol" aria-hidden="true">+</span>
         </button>
-        <div class="faq__answer" id="faq-answer-4"><div><p>Scope and fee are established after the working session. Pricing depends on company size, locations, business units, travel, interview count, data complexity, implementation requirements, and the specialists required.</p></div></div>
+        <div class="faq__answer" id="faq-answer-6"><div><p>Scope and fee are established after the working session. Pricing depends on company size, locations, business units, travel, interview count, data complexity, implementation requirements, and specialist involvement.</p></div></div>
+      </article>
+    </div>
+  </section>
+
+  <section class="fit" aria-labelledby="fit-title">
+    <h2 class="section-heading" id="fit-title">Who This Is For And Who It Is Not For</h2>
+    <div class="fit__grid">
+      <article class="fit-card fit-card--yes">
+        <h3>Who This Is For</h3>
+        <ul>
+          <li>Owner-led home-service and home-improvement companies</li>
+          <li>More than $2 million in annual revenue</li>
+          <li>More than 10 employees</li>
+          <li>Established operating and service history</li>
+          <li>Real handoffs between sales, management, office, and delivery</li>
+          <li>A consequential constraint, decision, or investment</li>
+          <li>Leadership willing to provide records and employee access</li>
+          <li>Enough management capacity to implement change</li>
+        </ul>
+      </article>
+      <article class="fit-card fit-card--no">
+        <h3>Who This Is Not For</h3>
+        <ul>
+          <li>Very early businesses still proving their initial offer</li>
+          <li>Companies unwilling to share financial or operating information</li>
+          <li>Owners unwilling to permit employee interviews</li>
+          <li>Leadership seeking validation for a decision already made</li>
+          <li>Companies expecting guaranteed revenue or valuation outcomes</li>
+          <li>Businesses without the authority or capacity to implement findings</li>
+          <li>Owners seeking motivational coaching rather than operating work</li>
+        </ul>
       </article>
     </div>
   </section>
 
   <section class="schedule" id="schedule" aria-labelledby="schedule-title">
-    <h2 class="section-heading" id="schedule-title">Make The Next Decision From What The Business Is Actually Showing</h2>
-    <p class="section-sub">Schedule a twenty-minute working session to compare your current priorities with the engagement, the evidence leadership currently has, the access required, and whether a one-month operating engagement is the responsible next step.</p>
-    <a class="cta" href="https://calendly.com/">👉 YES — SCHEDULE MY WORKING SESSION</a>
-    <p class="schedule__note">🔒 Confidential. No commitment required. If the scope does not fit, neither side has to force the conversation further.</p>
+    <p class="section-kicker">20-Minute Enterprise Value Working Session</p>
+    <h2 class="section-heading" id="schedule-title">Schedule The Working Session</h2>
+    <p class="section-sub">Twenty minutes to discuss the decision or constraint in front of the company, the evidence leadership currently has, and whether the engagement is appropriate.</p>
+    <div class="calendar-slot">
+      <p class="calendar-slot__eyebrow">Calendar Slot Ready</p>
+      <h3>20-Minute Enterprise Value Working Session</h3>
+      <p>Choose a time, then provide your company, website, annual revenue range, employee count, primary service, current decision or constraint, and decision-maker status.</p>
+      <a class="cta" href="https://calendly.com/">Open The 20-Minute Calendar</a>
+    </div>
+    <p class="schedule__note">Confidential. No commitment required. If the scope does not fit, neither side has to force the conversation further.</p>
   </section>
 </main>
 
@@ -1741,6 +2381,7 @@
   </div>
   <p class="footer__brand">SHC CONSULTING</p>
   <p class="footer__sub">An SHC Marketing Company</p>
+  <p class="footer__contact">Saint-Hylton Coombs | <a href="mailto:saint@shcmarketing.info">saint@shcmarketing.info</a> | <a href="https://shcmarketing.info/">shcmarketing.info</a></p>
   <p class="footer__legal">The Enterprise Value Acceleration Engagement does not provide legal, tax, accounting, investment, engineering, or certified business-valuation advice. Financial and operating results depend on verified company information, market conditions, capacity, execution, management participation, and other factors outside the engagement's control.</p>
   <p class="footer__links">© 2026 SHC Consulting. All rights reserved. · <a href="#">Privacy Policy</a> · <a href="#">Terms and Conditions</a></p>
 </footer>
