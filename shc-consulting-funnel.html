@@ -1665,13 +1665,29 @@
 
   .outcomes__grid {
     width: min(1240px, 100%);
-    gap: 24px;
+    gap: 20px;
   }
 
   .outcome {
-    padding-top: 22px;
-    border-top: 5px solid var(--ink);
+    position: relative;
+    padding: 32px 28px 34px;
+    overflow: hidden;
+    color: #fff;
+    background: var(--charcoal);
+    border: 1px solid #303437;
+    border-radius: 14px;
+    box-shadow: 0 22px 48px rgba(9,11,13,0.2);
     text-align: left;
+  }
+
+  .outcome::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 6px;
+    background: var(--red);
   }
 
   .outcome__index {
@@ -1686,6 +1702,7 @@
     min-height: 0;
     margin: 8px 0 6px;
     display: block;
+    color: #fff;
     font-size: 25px;
     text-align: left;
   }
@@ -1693,7 +1710,7 @@
   .outcome h4 {
     min-height: 72px;
     margin: 0 0 18px;
-    color: #56585b;
+    color: #d4d2cc;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.04em;
@@ -1703,10 +1720,13 @@
 
   .outcome__visual {
     height: 220px;
+    border-color: rgba(255,255,255,0.2);
+    box-shadow: 0 15px 32px rgba(0,0,0,0.24);
   }
 
   .outcome p {
     margin: 20px 0 0;
+    color: #f1f0ec;
     font-size: 14px;
     line-height: 1.65;
   }
@@ -1722,7 +1742,7 @@
   .outcome__points li {
     position: relative;
     padding-left: 18px;
-    color: #4e5053;
+    color: #d6d5d0;
     font-size: 12px;
     font-weight: 600;
     line-height: 1.45;
@@ -2095,14 +2115,14 @@
     <p class="hero__sub">Watch the short video to see why growing companies become harder to understand from the top, and how this engagement replaces assumption with evidence before the wrong problem receives more money.</p>
 
     <div class="video-stage" id="video-stage" data-youtube-id="bO09Qxy0i8k">
-      <button class="video-stage__poster" type="button" aria-label="Play The Number 1 Reason Your Company Feels Harder to Run">
+      <button class="video-stage__poster" type="button" aria-label="Play The Number 1 Reason Your Company Feels Harder to Run?">
         <img src="assets/vsl-thumbnail.jpg" alt="" width="1280" height="720">
         <span class="video-stage__kicker">Watch: 8 Minutes</span>
         <span class="video-stage__play" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
         </span>
         <span class="video-stage__copy">
-          <span class="video-stage__label">The #1 Reason Your Company Feels Harder to Run</span>
+          <span class="video-stage__label">The #1 Reason Your Company Feels Harder to Run?</span>
           <span class="video-stage__hint">Press play<br>Sound on</span>
         </span>
       </button>
@@ -2394,7 +2414,7 @@
     const videoId = vslStage.dataset.youtubeId;
     const iframe = document.createElement("iframe");
     iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
-    iframe.title = "The Number 1 Reason Your Company Feels Harder to Run";
+    iframe.title = "The Number 1 Reason Your Company Feels Harder to Run?";
     iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
     iframe.referrerPolicy = "strict-origin-when-cross-origin";
     iframe.allowFullscreen = true;
