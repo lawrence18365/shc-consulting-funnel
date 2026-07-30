@@ -1974,6 +1974,166 @@
     margin-top: 26px;
   }
 
+  .intake-form {
+    margin-top: 30px;
+    text-align: left;
+  }
+
+  .intake-form__required {
+    margin: 0 0 14px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .intake-required {
+    color: var(--red);
+  }
+
+  .intake-optional {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .intake-form__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 18px;
+  }
+
+  .intake-field {
+    display: grid;
+    gap: 8px;
+  }
+
+  .intake-field--full {
+    grid-column: 1 / -1;
+  }
+
+  .intake-field label,
+  .intake-fallback label {
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+  }
+
+  .intake-field input,
+  .intake-field select,
+  .intake-field textarea,
+  .intake-fallback textarea {
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 14px;
+    color: var(--ink);
+    background: #fbfaf7;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    line-height: 1.45;
+    transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  }
+
+  .intake-field textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .intake-field input::placeholder,
+  .intake-field textarea::placeholder {
+    color: #888a8d;
+  }
+
+  .intake-field input:focus-visible,
+  .intake-field select:focus-visible,
+  .intake-field textarea:focus-visible,
+  .intake-fallback textarea:focus-visible {
+    outline: 0;
+    border-color: var(--red);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(217, 35, 46, 0.14);
+  }
+
+  .intake-form .cta {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .intake-fallback {
+    margin-top: 26px;
+    padding: 22px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--red);
+    border-radius: var(--radius);
+    text-align: left;
+  }
+
+  .intake-fallback[hidden] {
+    display: none;
+  }
+
+  .intake-fallback h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    line-height: 1.35;
+  }
+
+  .intake-fallback p {
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .intake-fallback label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .intake-fallback textarea {
+    min-height: 260px;
+    resize: vertical;
+  }
+
+  .intake-fallback__actions {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .intake-copy {
+    min-height: 46px;
+    padding: 11px 18px;
+    color: #fff;
+    background: var(--charcoal);
+    border: 0;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 180ms ease, background 180ms ease;
+  }
+
+  .intake-copy:hover {
+    transform: translateY(-1px);
+    background: var(--black);
+  }
+
+  .intake-copy.is-copied {
+    background: var(--red);
+  }
+
+  .intake-fallback .intake-fallback__status {
+    min-height: 1.5em;
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
   .footer__contact {
     margin: 0 auto 12px;
     font-size: 12px;
@@ -2044,6 +2204,14 @@
     .calendar-slot {
       padding: 28px 22px;
     }
+
+    .intake-form__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .intake-field--full {
+      grid-column: auto;
+    }
   }
 
   @media (max-width: 480px) {
@@ -2088,6 +2256,23 @@
 
     .calendar-slot h3 {
       font-size: 22px;
+    }
+
+    .calendar-slot {
+      padding: 26px 18px;
+    }
+
+    .intake-fallback {
+      padding: 18px;
+    }
+
+    .intake-fallback__actions {
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .intake-copy {
+      width: 100%;
     }
   }
 
@@ -2389,10 +2574,78 @@
     <h2 class="section-heading" id="schedule-title">Schedule The Working Session</h2>
     <p class="section-sub">Twenty minutes to discuss the decision or constraint in front of the company, the evidence leadership currently has, and whether the engagement is appropriate.</p>
     <div class="calendar-slot">
-      <p class="calendar-slot__eyebrow">Calendar Slot Ready</p>
+      <p class="calendar-slot__eyebrow">Intake — 2 Minutes</p>
       <h3>20-Minute Enterprise Value Working Session</h3>
-      <p>Choose a time, then provide your company, website, annual revenue range, employee count, primary service, current decision or constraint, and decision-maker status.</p>
-      <a class="cta" href="https://calendly.com/">Open The 20-Minute Calendar</a>
+      <p id="intake-intro">Tell us about your company and the decision or constraint in front of it. Submitting will open a pre-addressed email with your answers.</p>
+      <form class="intake-form" id="working-session-form" aria-describedby="intake-intro">
+        <p class="intake-form__required"><span class="intake-required" aria-hidden="true">*</span> Required fields</p>
+        <div class="intake-form__grid">
+          <div class="intake-field">
+            <label for="intake-name">Full name <span class="intake-required" aria-hidden="true">*</span></label>
+            <input id="intake-name" name="fullName" type="text" autocomplete="name" required>
+          </div>
+          <div class="intake-field">
+            <label for="intake-email">Email <span class="intake-required" aria-hidden="true">*</span></label>
+            <input id="intake-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="intake-field">
+            <label for="intake-company">Company <span class="intake-required" aria-hidden="true">*</span></label>
+            <input id="intake-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="intake-field">
+            <label for="intake-website">Website <span class="intake-optional">(optional)</span></label>
+            <input id="intake-website" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://example.com">
+          </div>
+          <div class="intake-field">
+            <label for="intake-revenue">Annual revenue range <span class="intake-required" aria-hidden="true">*</span></label>
+            <select id="intake-revenue" name="annualRevenue" required>
+              <option value="" selected disabled>Select a range</option>
+              <option>Under $1M</option>
+              <option>$1M–$5M</option>
+              <option>$5M–$20M</option>
+              <option>$20M+</option>
+            </select>
+          </div>
+          <div class="intake-field">
+            <label for="intake-employees">Employee count <span class="intake-required" aria-hidden="true">*</span></label>
+            <select id="intake-employees" name="employeeCount" required>
+              <option value="" selected disabled>Select a range</option>
+              <option>1–10</option>
+              <option>11–50</option>
+              <option>51–200</option>
+              <option>200+</option>
+            </select>
+          </div>
+          <div class="intake-field intake-field--full">
+            <label for="intake-service">Primary service <span class="intake-required" aria-hidden="true">*</span></label>
+            <input id="intake-service" name="primaryService" type="text" required>
+          </div>
+          <div class="intake-field intake-field--full">
+            <label for="intake-constraint">Current decision or constraint in front of the company <span class="intake-required" aria-hidden="true">*</span></label>
+            <textarea id="intake-constraint" name="decisionConstraint" rows="5" required></textarea>
+          </div>
+          <div class="intake-field intake-field--full">
+            <label for="intake-decision-maker">Decision-maker status <span class="intake-required" aria-hidden="true">*</span></label>
+            <select id="intake-decision-maker" name="decisionMakerStatus" required>
+              <option value="" selected disabled>Select your role</option>
+              <option>I am the owner/CEO</option>
+              <option>I am part of the leadership team</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <button class="cta" type="submit">Request The Working Session</button>
+      </form>
+      <section class="intake-fallback" id="intake-fallback" aria-labelledby="intake-fallback-title" hidden>
+        <h4 id="intake-fallback-title">Your request is ready</h4>
+        <p>If your email app didn’t open, copy your answers and send them to <a href="mailto:saint@shcmarketing.info">saint@shcmarketing.info</a>.</p>
+        <label for="intake-fallback-details">Composed email details</label>
+        <textarea id="intake-fallback-details" readonly></textarea>
+        <div class="intake-fallback__actions">
+          <button class="intake-copy" id="intake-copy" type="button">Copy details</button>
+          <p class="intake-fallback__status" id="intake-copy-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
     </div>
     <p class="schedule__note">Confidential. No commitment required. If the scope does not fit, neither side has to force the conversation further.</p>
   </section>
@@ -2430,6 +2683,83 @@
       document.querySelectorAll(".faq__question").forEach((item) => item.setAttribute("aria-expanded", "false"));
       button.setAttribute("aria-expanded", String(!wasOpen));
     });
+  });
+
+  const intakeForm = document.querySelector("#working-session-form");
+  const intakeFallback = document.querySelector("#intake-fallback");
+  const intakeFallbackDetails = document.querySelector("#intake-fallback-details");
+  const intakeCopyButton = document.querySelector("#intake-copy");
+  const intakeCopyStatus = document.querySelector("#intake-copy-status");
+
+  intakeForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (!intakeForm.checkValidity()) {
+      intakeForm.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(intakeForm);
+    const getAnswer = (name) => String(formData.get(name) || "").trim().replace(/\r?\n/g, "\r\n");
+    const company = getAnswer("company");
+    const subject = `Working Session Request — ${company}`;
+    const summary = [
+      "Working Session Request",
+      "",
+      `Full name: ${getAnswer("fullName")}`,
+      `Email: ${getAnswer("email")}`,
+      `Company: ${company}`,
+      `Website: ${getAnswer("website") || "Not provided"}`,
+      `Annual revenue range: ${getAnswer("annualRevenue")}`,
+      `Employee count: ${getAnswer("employeeCount")}`,
+      `Primary service: ${getAnswer("primaryService")}`,
+      `Current decision or constraint: ${getAnswer("decisionConstraint")}`,
+      `Decision-maker status: ${getAnswer("decisionMakerStatus")}`
+    ].join("\r\n");
+
+    intakeFallbackDetails.value = summary;
+    intakeFallback.hidden = false;
+    intakeCopyButton.textContent = "Copy details";
+    intakeCopyButton.classList.remove("is-copied");
+    intakeCopyStatus.textContent = "";
+
+    const mailtoLink = `mailto:saint@shcmarketing.info?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
+    window.location.href = mailtoLink;
+  });
+
+  intakeCopyButton?.addEventListener("click", async () => {
+    const selectAndCopy = () => {
+      intakeFallbackDetails.focus();
+      intakeFallbackDetails.select();
+      intakeFallbackDetails.setSelectionRange(0, intakeFallbackDetails.value.length);
+
+      try {
+        return document.execCommand("copy");
+      } catch (error) {
+        return false;
+      }
+    };
+
+    let copied = false;
+
+    if (navigator.clipboard && window.isSecureContext) {
+      try {
+        await navigator.clipboard.writeText(intakeFallbackDetails.value);
+        copied = true;
+      } catch (error) {
+        copied = selectAndCopy();
+      }
+    } else {
+      copied = selectAndCopy();
+    }
+
+    if (copied) {
+      intakeCopyButton.textContent = "Copied";
+      intakeCopyButton.classList.add("is-copied");
+      intakeCopyStatus.textContent = "Details copied to your clipboard.";
+    } else {
+      intakeCopyStatus.textContent = "Select the text above and copy it manually.";
+    }
   });
 </script>
 </body>
