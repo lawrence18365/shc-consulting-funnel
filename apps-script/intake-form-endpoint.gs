@@ -9,8 +9,8 @@
 
 const NOTIFY_EMAIL = "saint@shcmarketing.info";
 
-// Optional: paste the Google Sheet ID from its URL here to save each submission.
-const SHEET_ID = "";
+// Google Sheet ID from its URL; clear this value to disable Sheet logging.
+const SHEET_ID = "1ioLCHQLXtl2li5yt70B0gcSsDqpHLCXOuRJ_hYG0psM";
 
 const MAX_FIELD_LENGTH = 2000;
 
@@ -76,7 +76,26 @@ function doPost(e) {
 
     if (SHEET_ID) {
       try {
-        SpreadsheetApp.openById(SHEET_ID).getSheets()[0].appendRow([
+        var sheet = SpreadsheetApp.openById(SHEET_ID).getSheets()[0];
+
+        if (sheet.getLastRow() === 0) {
+          sheet.appendRow([
+            "Timestamp",
+            "Full name",
+            "Email",
+            "Company",
+            "Website",
+            "Annual revenue range",
+            "Employee count",
+            "Primary service",
+            "Preferred day",
+            "Current decision or constraint",
+            "Desired outcome",
+            "Decision-maker status"
+          ]);
+        }
+
+        sheet.appendRow([
           new Date(),
           fields.fullName,
           fields.email,
