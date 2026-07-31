@@ -1742,6 +1742,14 @@
     gap: 8px;
   }
 
+  .intake-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
   .intake-field--full {
     grid-column: 1 / -1;
   }
@@ -1776,11 +1784,6 @@
     resize: vertical;
   }
 
-  .intake-field input::placeholder,
-  .intake-field textarea::placeholder {
-    color: #888a8d;
-  }
-
   .intake-field input:focus-visible,
   .intake-field select:focus-visible,
   .intake-field textarea:focus-visible,
@@ -1796,7 +1799,7 @@
     cursor: pointer;
   }
 
-  .intake-fallback {
+  .intake-panel {
     margin-top: 26px;
     padding: 22px;
     background: var(--paper);
@@ -1806,21 +1809,25 @@
     text-align: left;
   }
 
-  .intake-fallback[hidden] {
+  .intake-panel[hidden] {
     display: none;
   }
 
-  .intake-fallback h4 {
+  .intake-panel h4 {
     margin: 0 0 8px;
     font-size: 18px;
     line-height: 1.35;
   }
 
-  .intake-fallback p {
+  .intake-panel p {
     margin: 0 0 16px;
     color: var(--muted);
     font-size: 13px;
     line-height: 1.6;
+  }
+
+  .intake-success p {
+    margin-bottom: 0;
   }
 
   .intake-fallback label {
@@ -1947,7 +1954,7 @@
       padding: 26px 18px;
     }
 
-    .intake-fallback {
+    .intake-panel {
       padding: 18px;
     }
 
@@ -2246,11 +2253,15 @@
     <h2 class="section-heading" id="schedule-title">Schedule The Working Session</h2>
     <p class="section-sub">Twenty minutes to discuss the decision or constraint in front of the company, the evidence leadership currently has, and whether the engagement is appropriate.</p>
     <div class="calendar-slot">
-      <p class="calendar-slot__eyebrow">Intake — 2 Minutes</p>
+      <p class="calendar-slot__eyebrow">Intake — 30 Seconds</p>
       <h3>20-Minute Enterprise Value Working Session</h3>
-      <p id="intake-intro">Tell us about your company and the decision or constraint in front of it. Submitting will open a pre-addressed email with your answers.</p>
+      <p id="intake-intro">Four quick details and we'll be in touch to confirm a time. Your request is sent securely without leaving this page.</p>
       <form class="intake-form" id="working-session-form" aria-describedby="intake-intro">
         <p class="intake-form__required"><span class="intake-required" aria-hidden="true">*</span> Required fields</p>
+        <div class="intake-hp" aria-hidden="true">
+          <label for="intake-company-fax">Company fax</label>
+          <input id="intake-company-fax" name="companyFax" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+        </div>
         <div class="intake-form__grid">
           <div class="intake-field">
             <label for="intake-name">Full name <span class="intake-required" aria-hidden="true">*</span></label>
@@ -2265,35 +2276,7 @@
             <input id="intake-company" name="company" type="text" autocomplete="organization" required>
           </div>
           <div class="intake-field">
-            <label for="intake-website">Website <span class="intake-optional">(optional)</span></label>
-            <input id="intake-website" name="website" type="url" inputmode="url" autocomplete="url" placeholder="https://example.com">
-          </div>
-          <div class="intake-field">
-            <label for="intake-revenue">Annual revenue range <span class="intake-required" aria-hidden="true">*</span></label>
-            <select id="intake-revenue" name="annualRevenue" required>
-              <option value="" selected disabled>Select a range</option>
-              <option>Under $1M</option>
-              <option>$1M–$5M</option>
-              <option>$5M–$20M</option>
-              <option>$20M+</option>
-            </select>
-          </div>
-          <div class="intake-field">
-            <label for="intake-employees">Employee count <span class="intake-required" aria-hidden="true">*</span></label>
-            <select id="intake-employees" name="employeeCount" required>
-              <option value="" selected disabled>Select a range</option>
-              <option>1–10</option>
-              <option>11–50</option>
-              <option>51–200</option>
-              <option>200+</option>
-            </select>
-          </div>
-          <div class="intake-field intake-field--full">
-            <label for="intake-service">Primary service <span class="intake-required" aria-hidden="true">*</span></label>
-            <input id="intake-service" name="primaryService" type="text" required>
-          </div>
-          <div class="intake-field intake-field--full">
-            <label for="intake-preferred-day">Preferred day for the working session <span class="intake-optional">(optional)</span></label>
+            <label for="intake-preferred-day">Preferred day <span class="intake-optional">(optional)</span></label>
             <select id="intake-preferred-day" name="preferredDay">
               <option selected>No preference</option>
               <option>Monday</option>
@@ -2306,28 +2289,19 @@
             </select>
           </div>
           <div class="intake-field intake-field--full">
-            <label for="intake-constraint">Current decision or constraint in front of the company <span class="intake-optional">(optional)</span></label>
-            <textarea id="intake-constraint" name="decisionConstraint" rows="5"></textarea>
-          </div>
-          <div class="intake-field intake-field--full">
-            <label for="intake-desired-outcome">Desired outcome <span class="intake-optional">(optional)</span></label>
-            <textarea id="intake-desired-outcome" name="desiredOutcome" rows="4"></textarea>
-          </div>
-          <div class="intake-field intake-field--full">
-            <label for="intake-decision-maker">Decision-maker status <span class="intake-required" aria-hidden="true">*</span></label>
-            <select id="intake-decision-maker" name="decisionMakerStatus" required>
-              <option value="" selected disabled>Select your role</option>
-              <option>I am the owner/CEO</option>
-              <option>I am part of the leadership team</option>
-              <option>Other</option>
-            </select>
+            <label for="intake-notes">What would you like to cover? <span class="intake-optional">(optional)</span></label>
+            <textarea id="intake-notes" name="notes" rows="4"></textarea>
           </div>
         </div>
         <button class="cta" type="submit">Request The Working Session</button>
       </form>
-      <section class="intake-fallback" id="intake-fallback" aria-labelledby="intake-fallback-title" hidden>
-        <h4 id="intake-fallback-title">Your request is ready</h4>
-        <p>If your email app didn’t open, copy your answers and send them to <a href="mailto:saint@shcmarketing.info">saint@shcmarketing.info</a>.</p>
+      <section class="intake-panel intake-success" id="intake-success" role="status" aria-live="polite" aria-labelledby="intake-success-title" tabindex="-1" hidden>
+        <h4 id="intake-success-title">Request received</h4>
+        <p>Thank you — your request has been sent to Saint-Hylton Coombs. You’ll receive a reply at the email address you provided, usually within one business day.</p>
+      </section>
+      <section class="intake-panel intake-fallback" id="intake-fallback" aria-labelledby="intake-fallback-title" hidden>
+        <h4 id="intake-fallback-title">Send it directly instead</h4>
+        <p>The automatic send didn’t go through. Please send your details by email to <a href="mailto:saint@shcmarketing.info">saint@shcmarketing.info</a>.</p>
         <label for="intake-fallback-details">Composed email details</label>
         <textarea id="intake-fallback-details" readonly></textarea>
         <div class="intake-fallback__actions">
@@ -2374,13 +2348,17 @@
     });
   });
 
+  // Google Apps Script web-app deployment for working-session intake submissions.
+  const INTAKE_ENDPOINT = "https://script.google.com/macros/s/AKfycbyRKZka6urzLya6qQAwDtpwGRc9tl4qmPDlqOOI2ZEDEjTIrNMaAIZOb6TTyTEZYnjj/exec";
   const intakeForm = document.querySelector("#working-session-form");
+  const intakeSubmitButton = intakeForm?.querySelector('button[type="submit"]');
+  const intakeSuccess = document.querySelector("#intake-success");
   const intakeFallback = document.querySelector("#intake-fallback");
   const intakeFallbackDetails = document.querySelector("#intake-fallback-details");
   const intakeCopyButton = document.querySelector("#intake-copy");
   const intakeCopyStatus = document.querySelector("#intake-copy-status");
 
-  intakeForm?.addEventListener("submit", (event) => {
+  intakeForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     if (!intakeForm.checkValidity()) {
@@ -2389,6 +2367,7 @@
     }
 
     const formData = new FormData(intakeForm);
+    const payload = Object.fromEntries(formData.entries());
     const getAnswer = (name) => String(formData.get(name) || "").trim().replace(/\r?\n/g, "\r\n");
     const company = getAnswer("company");
     const subject = `Working Session Request — ${company}`;
@@ -2398,24 +2377,55 @@
       `Full name: ${getAnswer("fullName")}`,
       `Email: ${getAnswer("email")}`,
       `Company: ${company}`,
-      `Website: ${getAnswer("website") || "Not provided"}`,
-      `Annual revenue range: ${getAnswer("annualRevenue")}`,
-      `Employee count: ${getAnswer("employeeCount")}`,
-      `Primary service: ${getAnswer("primaryService")}`,
-      `Preferred day: ${getAnswer("preferredDay") || "Not provided"}`,
-      `Current decision or constraint: ${getAnswer("decisionConstraint") || "Not provided"}`,
-      `Desired outcome: ${getAnswer("desiredOutcome") || "Not provided"}`,
-      `Decision-maker status: ${getAnswer("decisionMakerStatus")}`
+      `Preferred day: ${getAnswer("preferredDay")}`,
+      `Notes: ${getAnswer("notes") || "Not provided"}`
     ].join("\r\n");
 
-    intakeFallbackDetails.value = summary;
-    intakeFallback.hidden = false;
-    intakeCopyButton.textContent = "Copy details";
-    intakeCopyButton.classList.remove("is-copied");
-    intakeCopyStatus.textContent = "";
-
     const mailtoLink = `mailto:saint@shcmarketing.info?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(summary)}`;
-    window.location.href = mailtoLink;
+    const originalSubmitLabel = intakeSubmitButton.textContent;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), 15000);
+
+    intakeSubmitButton.disabled = true;
+    intakeSubmitButton.textContent = "Sending…";
+
+    try {
+      const response = await fetch(INTAKE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+        redirect: "follow",
+        signal: controller.signal
+      });
+
+      let responseData = null;
+
+      try {
+        responseData = await response.json();
+      } catch (error) {
+        // A parse error alone is not a failure for Apps Script redirect responses.
+      }
+
+      if (responseData?.ok === false) {
+        throw new Error("The intake endpoint rejected the submission.");
+      }
+
+      intakeForm.hidden = true;
+      intakeFallback.hidden = true;
+      intakeSuccess.hidden = false;
+      intakeSuccess.focus();
+    } catch (error) {
+      intakeSubmitButton.disabled = false;
+      intakeSubmitButton.textContent = originalSubmitLabel;
+      intakeFallbackDetails.value = summary;
+      intakeFallback.hidden = false;
+      intakeCopyButton.textContent = "Copy details";
+      intakeCopyButton.classList.remove("is-copied");
+      intakeCopyStatus.textContent = "";
+      window.location.href = mailtoLink;
+    } finally {
+      window.clearTimeout(timeoutId);
+    }
   });
 
   intakeCopyButton?.addEventListener("click", async () => {

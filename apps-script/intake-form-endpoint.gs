@@ -30,14 +30,8 @@ function doPost(e) {
       fullName: cleanValue_(submission.fullName),
       email: cleanValue_(submission.email),
       company: cleanValue_(submission.company),
-      website: cleanValue_(submission.website),
-      annualRevenue: cleanValue_(submission.annualRevenue),
-      employeeCount: cleanValue_(submission.employeeCount),
-      primaryService: cleanValue_(submission.primaryService),
       preferredDay: cleanValue_(submission.preferredDay),
-      decisionConstraint: cleanValue_(submission.decisionConstraint),
-      desiredOutcome: cleanValue_(submission.desiredOutcome),
-      decisionMakerStatus: cleanValue_(submission.decisionMakerStatus),
+      notes: cleanValue_(submission.notes),
       companyFax: cleanValue_(submission.companyFax)
     };
 
@@ -50,14 +44,8 @@ function doPost(e) {
       "Full name: " + fields.fullName,
       "Email: " + fields.email,
       "Company: " + fields.company,
-      "Website: " + fields.website,
-      "Annual revenue range: " + fields.annualRevenue,
-      "Employee count: " + fields.employeeCount,
-      "Primary service: " + fields.primaryService,
       "Preferred day: " + fields.preferredDay,
-      "Current decision or constraint: " + fields.decisionConstraint,
-      "Desired outcome: " + fields.desiredOutcome,
-      "Decision-maker status: " + fields.decisionMakerStatus
+      "Notes: " + (fields.notes || "Not provided")
     ].join("\n");
 
     var message = {
@@ -84,14 +72,8 @@ function doPost(e) {
             "Full name",
             "Email",
             "Company",
-            "Website",
-            "Annual revenue range",
-            "Employee count",
-            "Primary service",
             "Preferred day",
-            "Current decision or constraint",
-            "Desired outcome",
-            "Decision-maker status"
+            "Notes"
           ]);
         }
 
@@ -100,14 +82,8 @@ function doPost(e) {
           fields.fullName,
           fields.email,
           fields.company,
-          fields.website,
-          fields.annualRevenue,
-          fields.employeeCount,
-          fields.primaryService,
           fields.preferredDay,
-          fields.decisionConstraint,
-          fields.desiredOutcome,
-          fields.decisionMakerStatus
+          fields.notes
         ]);
       } catch (sheetError) {
         // Email delivery succeeded; a Sheet error must not change the response.
