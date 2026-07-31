@@ -34,7 +34,9 @@ function doPost(e) {
       annualRevenue: cleanValue_(submission.annualRevenue),
       employeeCount: cleanValue_(submission.employeeCount),
       primaryService: cleanValue_(submission.primaryService),
+      preferredDay: cleanValue_(submission.preferredDay),
       decisionConstraint: cleanValue_(submission.decisionConstraint),
+      desiredOutcome: cleanValue_(submission.desiredOutcome),
       decisionMakerStatus: cleanValue_(submission.decisionMakerStatus),
       companyFax: cleanValue_(submission.companyFax)
     };
@@ -52,7 +54,9 @@ function doPost(e) {
       "Annual revenue range: " + fields.annualRevenue,
       "Employee count: " + fields.employeeCount,
       "Primary service: " + fields.primaryService,
+      "Preferred day: " + fields.preferredDay,
       "Current decision or constraint: " + fields.decisionConstraint,
+      "Desired outcome: " + fields.desiredOutcome,
       "Decision-maker status: " + fields.decisionMakerStatus
     ].join("\n");
 
@@ -81,7 +85,9 @@ function doPost(e) {
           fields.annualRevenue,
           fields.employeeCount,
           fields.primaryService,
+          fields.preferredDay,
           fields.decisionConstraint,
+          fields.desiredOutcome,
           fields.decisionMakerStatus
         ]);
       } catch (sheetError) {

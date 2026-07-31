@@ -430,14 +430,6 @@
     line-height: 40px;
   }
 
-  .proof__subtitle {
-    max-width: 680px;
-    margin: 8px auto 0;
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.6;
-  }
-
   .evidence-visual {
     position: relative;
     width: min(620px, 100%);
@@ -720,10 +712,10 @@
     line-height: 1.5;
   }
 
-  /* One real client story, followed by discreet outcome evidence. */
+  /* Anonymized case-study outcomes. */
   .proof {
     min-height: 0;
-    padding: 76px 20px 82px;
+    padding: 78px 20px 84px;
   }
 
   .proof__title {
@@ -732,141 +724,33 @@
     line-height: 1.12;
   }
 
-  .client-proof {
-    width: min(960px, 100%);
+  .proof-outcomes {
+    width: min(1020px, 100%);
     margin: 38px auto 0;
     display: grid;
-    grid-template-columns: 0.95fr 1.05fr;
-    overflow: hidden;
-    background: #fff;
-    border: 1px solid #dedbd4;
-    border-radius: 18px;
-    box-shadow: 0 24px 58px rgba(9,11,13,0.13);
-    text-align: left;
-  }
-
-  .client-proof__photo {
-    position: relative;
-    min-height: 455px;
-    margin: 0;
-    overflow: hidden;
-    background: var(--charcoal);
-  }
-
-  .client-proof__photo::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(180deg, transparent 55%, rgba(9,11,13,0.82) 100%);
-    pointer-events: none;
-  }
-
-  .client-proof__photo img {
-    width: 100%;
-    height: 100%;
-    min-height: 455px;
-    object-fit: cover;
-    object-position: 56% 42%;
-  }
-
-  .client-proof__photo figcaption {
-    position: absolute;
-    z-index: 2;
-    right: 24px;
-    bottom: 22px;
-    left: 24px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-  }
-
-  .client-proof__quote {
-    position: relative;
-    padding: 48px 48px 44px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .client-proof__quote::before {
-    content: "“";
-    position: absolute;
-    top: 18px;
-    right: 34px;
-    color: var(--proof-highlight);
-    font-family: Georgia, serif;
-    font-size: 118px;
-    line-height: 1;
-  }
-
-  .client-proof__stars {
-    position: relative;
-    z-index: 1;
-    margin-bottom: 20px;
-    color: var(--red);
-    font-size: 21px;
-    letter-spacing: 0.12em;
-    line-height: 1;
-  }
-
-  .client-proof__eyebrow {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 12px;
-    color: #717376;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  }
-
-  .client-proof blockquote {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    font-size: clamp(25px, 2.4vw, 34px);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.27;
-  }
-
-  .client-proof__name {
-    position: relative;
-    z-index: 1;
-    margin: 26px 0 0;
-    font-size: 14px;
-    font-weight: 800;
-  }
-
-  .proof-outcomes {
-    width: min(960px, 100%);
-    margin: 18px auto 0;
-    display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 12px;
+    gap: 14px;
   }
 
   .proof-outcome {
-    min-height: 158px;
-    padding: 22px 20px 20px;
+    min-height: 176px;
+    padding: 28px 22px 24px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     color: var(--ink);
     background: #fff;
-    border: 1px solid #dedbd4;
-    border-radius: 12px;
-    box-shadow: 0 10px 24px rgba(9,11,13,0.07);
-    text-align: left;
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--red);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    text-align: center;
   }
 
   .proof-outcome strong {
-    margin-top: 16px;
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(25px, 2.25vw, 32px);
+    font-size: clamp(30px, 3vw, 40px);
     letter-spacing: -0.04em;
     line-height: 1;
   }
@@ -874,9 +758,11 @@
   .proof-outcome span:last-child {
     margin-top: 8px;
     color: #65676a;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
     line-height: 1.35;
+    text-transform: uppercase;
   }
 
   .proof__disclaimer {
@@ -1405,22 +1291,6 @@
 
     .proof__title { font-size: 28px; line-height: 34px; }
 
-    .client-proof {
-      grid-template-columns: 1fr;
-      margin-top: 28px;
-    }
-
-    .client-proof__photo,
-    .client-proof__photo img {
-      min-height: 350px;
-    }
-
-    .client-proof__photo img { object-position: 54% 38%; }
-
-    .client-proof__quote { padding: 38px 26px 34px; }
-    .client-proof__quote::before { top: 14px; right: 20px; font-size: 90px; }
-    .client-proof blockquote { font-size: 27px; }
-
     .proof-outcomes {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 10px;
@@ -1519,141 +1389,7 @@
     .workstream { padding-left: 58px; }
   }
 
-  /* V2 revision: proof overlay, expanded engagement detail, and booking flow. */
-  .proof {
-    padding: 78px 20px 84px;
-  }
-
-  .proof__subtitle {
-    margin: 12px auto 0;
-    color: #66686b;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-
-  .client-proof {
-    position: relative;
-    width: min(1020px, 100%);
-    min-height: 650px;
-    margin: 38px auto 0;
-    display: block;
-    overflow: hidden;
-    color: #fff;
-    background: var(--black);
-    border: 0;
-    border-radius: 18px;
-    box-shadow: 0 28px 72px rgba(9,11,13,0.22);
-  }
-
-  .client-proof::after {
-    content: "";
-    position: absolute;
-    z-index: 1;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(9,11,13,0.08) 0%, rgba(9,11,13,0.22) 34%, rgba(9,11,13,0.82) 58%, rgba(9,11,13,0.97) 100%),
-      linear-gradient(180deg, rgba(9,11,13,0.05) 45%, rgba(9,11,13,0.76) 100%);
-    pointer-events: none;
-  }
-
-  .client-proof__background {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 50% 24%;
-  }
-
-  .client-proof__overlay {
-    position: relative;
-    z-index: 2;
-    width: 55%;
-    min-height: 650px;
-    margin-left: auto;
-    padding: 42px 38px 38px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .client-proof__quote {
-    padding: 0;
-    display: block;
-  }
-
-  .client-proof__quote::before {
-    top: -38px;
-    right: 0;
-    color: rgba(255,255,255,0.12);
-    font-size: 110px;
-  }
-
-  .client-proof__stars {
-    margin-bottom: 16px;
-    color: #ff4650;
-  }
-
-  .client-proof__eyebrow {
-    color: #d8d5ce;
-  }
-
-  .client-proof blockquote {
-    max-width: 470px;
-    color: #fff;
-    font-size: clamp(25px, 2.45vw, 34px);
-  }
-
-  .client-proof__name {
-    margin-top: 22px;
-    color: #fff;
-  }
-
-  .client-proof__name span {
-    margin-left: 8px;
-    color: #c9c7c1;
-    font-weight: 500;
-  }
-
-  .client-proof .proof-outcomes {
-    width: 100%;
-    margin: 30px 0 0;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
-
-  .client-proof .proof-outcome {
-    min-height: 104px;
-    padding: 17px;
-    align-items: flex-start;
-    justify-content: center;
-    color: #fff;
-    background: rgba(255,255,255,0.1);
-    border-color: rgba(255,255,255,0.18);
-    box-shadow: none;
-    backdrop-filter: blur(7px);
-  }
-
-  .client-proof .proof-outcome strong {
-    margin-top: 0;
-    font-size: clamp(24px, 2.2vw, 31px);
-  }
-
-  .client-proof .proof-outcome span:last-child {
-    margin-top: 9px;
-    color: #ff5962;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    line-height: 1.25;
-    text-transform: uppercase;
-  }
-
-  .proof__cta {
-    display: none;
-  }
-
+  /* V2 revision: expanded engagement detail and booking flow. */
   .outcomes {
     padding: 68px 36px 80px;
   }
@@ -2147,43 +1883,6 @@
       line-height: 28px;
     }
 
-    .client-proof {
-      min-height: 940px;
-    }
-
-    .client-proof::after {
-      background: linear-gradient(180deg, rgba(9,11,13,0.04) 0%, rgba(9,11,13,0.15) 35%, rgba(9,11,13,0.88) 58%, rgba(9,11,13,0.98) 100%);
-    }
-
-    .client-proof__background {
-      object-position: 48% 10%;
-    }
-
-    .client-proof__overlay {
-      width: 100%;
-      min-height: 940px;
-      padding: 430px 24px 26px;
-    }
-
-    .client-proof__quote {
-      padding: 0;
-    }
-
-    .client-proof blockquote {
-      max-width: 540px;
-      font-size: 27px;
-    }
-
-    .client-proof .proof-outcomes {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    .proof__cta {
-      width: min(100%, 560px);
-      margin-top: 22px;
-      display: flex;
-    }
-
     .outcomes {
       padding-inline: 20px;
     }
@@ -2215,27 +1914,13 @@
   }
 
   @media (max-width: 480px) {
-    .client-proof {
-      min-height: 900px;
+    .proof-outcomes {
+      grid-template-columns: 1fr;
     }
 
-    .client-proof__overlay {
-      min-height: 900px;
-      padding: 400px 18px 20px;
-    }
-
-    .client-proof blockquote {
-      font-size: 23px;
-      line-height: 1.32;
-    }
-
-    .client-proof .proof-outcome {
-      min-height: 110px;
-      padding: 14px;
-    }
-
-    .client-proof .proof-outcome strong {
-      font-size: 23px;
+    .proof-outcome {
+      min-height: 132px;
+      padding: 22px 18px;
     }
 
     .outcome__visual {
@@ -2332,18 +2017,12 @@
 
   <section class="proof" aria-labelledby="proof-title">
     <h2 class="proof__title" id="proof-title">Most Recent Case Study: Measurable Outcomes</h2>
-    <p class="proof__subtitle">BowTie Cleaning</p>
 
-    <div class="client-proof">
-      <img class="client-proof__background" src="assets/wayne-proof.webp" alt="Wayne, owner of BowTie Cleaning, at work" width="1600" height="2133">
-      <div class="client-proof__overlay">
-        <div class="proof-outcomes" aria-label="Verified client outcomes">
-          <article class="proof-outcome"><strong>+137%</strong><span>Revenue</span></article>
-          <article class="proof-outcome"><strong>+77%</strong><span>Jobs</span></article>
-          <article class="proof-outcome"><strong>+36%</strong><span>Average order value</span></article>
-          <article class="proof-outcome"><strong>4/day</strong><span>Leads</span></article>
-        </div>
-      </div>
+    <div class="proof-outcomes" aria-label="Verified client outcomes">
+      <article class="proof-outcome"><strong>+137%</strong><span>Revenue</span></article>
+      <article class="proof-outcome"><strong>+77%</strong><span>Jobs</span></article>
+      <article class="proof-outcome"><strong>+36%</strong><span>Average order value</span></article>
+      <article class="proof-outcome"><strong>4/day</strong><span>Leads</span></article>
     </div>
 
     <a class="cta proof__cta" href="#working-session">I Want Results Like This</a>
@@ -2614,8 +2293,25 @@
             <input id="intake-service" name="primaryService" type="text" required>
           </div>
           <div class="intake-field intake-field--full">
-            <label for="intake-constraint">Current decision or constraint in front of the company <span class="intake-required" aria-hidden="true">*</span></label>
-            <textarea id="intake-constraint" name="decisionConstraint" rows="5" required></textarea>
+            <label for="intake-preferred-day">Preferred day for the working session <span class="intake-optional">(optional)</span></label>
+            <select id="intake-preferred-day" name="preferredDay">
+              <option selected>No preference</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
+          </div>
+          <div class="intake-field intake-field--full">
+            <label for="intake-constraint">Current decision or constraint in front of the company <span class="intake-optional">(optional)</span></label>
+            <textarea id="intake-constraint" name="decisionConstraint" rows="5"></textarea>
+          </div>
+          <div class="intake-field intake-field--full">
+            <label for="intake-desired-outcome">Desired outcome <span class="intake-optional">(optional)</span></label>
+            <textarea id="intake-desired-outcome" name="desiredOutcome" rows="4"></textarea>
           </div>
           <div class="intake-field intake-field--full">
             <label for="intake-decision-maker">Decision-maker status <span class="intake-required" aria-hidden="true">*</span></label>
@@ -2706,7 +2402,9 @@
       `Annual revenue range: ${getAnswer("annualRevenue")}`,
       `Employee count: ${getAnswer("employeeCount")}`,
       `Primary service: ${getAnswer("primaryService")}`,
-      `Current decision or constraint: ${getAnswer("decisionConstraint")}`,
+      `Preferred day: ${getAnswer("preferredDay") || "Not provided"}`,
+      `Current decision or constraint: ${getAnswer("decisionConstraint") || "Not provided"}`,
+      `Desired outcome: ${getAnswer("desiredOutcome") || "Not provided"}`,
       `Decision-maker status: ${getAnswer("decisionMakerStatus")}`
     ].join("\r\n");
 
