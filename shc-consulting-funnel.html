@@ -2262,6 +2262,8 @@
           <label for="intake-company-fax">Company fax</label>
           <input id="intake-company-fax" name="companyFax" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
         </div>
+        <input id="intake-js-token" name="jsToken" type="hidden" value="">
+        <input id="intake-elapsed-ms" name="elapsedMs" type="hidden" value="">
         <div class="intake-form__grid">
           <div class="intake-field">
             <label for="intake-name">Full name <span class="intake-required" aria-hidden="true">*</span></label>
@@ -2326,6 +2328,7 @@
 </footer>
 
 <script>
+  const intakeLoadedAt = Date.now();
   const vslStage = document.querySelector("#video-stage");
   const vslPoster = vslStage?.querySelector(".video-stage__poster");
 
@@ -2357,6 +2360,12 @@
   const intakeFallbackDetails = document.querySelector("#intake-fallback-details");
   const intakeCopyButton = document.querySelector("#intake-copy");
   const intakeCopyStatus = document.querySelector("#intake-copy-status");
+  const intakeJsToken = intakeForm?.querySelector('input[name="jsToken"]');
+  const intakeElapsedMs = intakeForm?.querySelector('input[name="elapsedMs"]');
+
+  if (intakeJsToken) {
+    intakeJsToken.value = "shc-intake-v1";
+  }
 
   intakeForm?.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -2364,6 +2373,10 @@
     if (!intakeForm.checkValidity()) {
       intakeForm.reportValidity();
       return;
+    }
+
+    if (intakeElapsedMs) {
+      intakeElapsedMs.value = String(Date.now() - intakeLoadedAt);
     }
 
     const formData = new FormData(intakeForm);
